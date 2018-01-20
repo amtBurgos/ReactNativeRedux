@@ -1,13 +1,35 @@
 import * as types from '../types/main';
 
+import { keyGen } from '../util/util';
+
 const initialState = {
   text: 'Hello from Main',
   items: [
-    { id: 'exampleKey1', value: 'One' },
-    { id: 'exampleKey2', value: 'Two' },
-    { id: 'exampleKey3', value: 'Three' },
-    { id: 'exampleKey4', value: 'Four' },
-    { id: 'exampleKey5', value: 'Five' },
+    { id: keyGen(), value: 'One' },
+    { id: keyGen(), value: 'Two' },
+    { id: keyGen(), value: 'Three' },
+    { id: keyGen(), value: 'Four' },
+    { id: keyGen(), value: 'Five' },
+    { id: keyGen(), value: 'One' },
+    { id: keyGen(), value: 'Two' },
+    { id: keyGen(), value: 'Three' },
+    { id: keyGen(), value: 'Four' },
+    { id: keyGen(), value: 'Five' },
+    { id: keyGen(), value: 'One' },
+    { id: keyGen(), value: 'Two' },
+    { id: keyGen(), value: 'Three' },
+    { id: keyGen(), value: 'Four' },
+    { id: keyGen(), value: 'Five' },
+    { id: keyGen(), value: 'One' },
+    { id: keyGen(), value: 'Two' },
+    { id: keyGen(), value: 'Three' },
+    { id: keyGen(), value: 'Four' },
+    { id: keyGen(), value: 'Five' },
+    { id: keyGen(), value: 'One' },
+    { id: keyGen(), value: 'Two' },
+    { id: keyGen(), value: 'Three' },
+    { id: keyGen(), value: 'Four' },
+    { id: keyGen(), value: 'Five' },
   ],
 };
 

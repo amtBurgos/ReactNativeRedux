@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 const style = {
   text: {
-    fontSize: 14,
+    fontSize: 20,
     textAlign: 'left',
     margin: 10,
   },
