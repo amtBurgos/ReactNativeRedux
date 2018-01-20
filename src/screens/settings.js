@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, View, Button } from 'react-native';
 // import { Actions } from 'react-native-router-flux';
-import { changeItemTextColor } from '../actions/settings';
+import { changePrimaryColorAction, changeItemTextColorAction } from '../actions/settings';
 
 const styles = StyleSheet.create({
   container: {
@@ -17,9 +17,8 @@ const colorList = ['#4caf50', '#00bcd4', '#9c27b0', '#f44336', '#fb8c00', '#d500
 
 const getRandomColor = () => colorList[Math.floor(Math.random() * colorList.length)];
 
-const Settings = ({ text = '', onChangeItemTextColor = () => {} }) => (
+const Settings = ({ primaryColor = '', itemTextColor = '', onChangeItemTextColor = () => {} }) => (
   <View style={styles.container}>
-    <Text>{text}</Text>
     <Button
       onPress={() => onChangeItemTextColor(getRandomColor())}
       onLongPress={() => {}}
@@ -31,13 +30,16 @@ const Settings = ({ text = '', onChangeItemTextColor = () => {} }) => (
 );
 
 const mapStateToProps = ({ settings }) => {
-  const { text } = settings;
-  return { text };
+  const { primaryColor, itemTextColor } = settings;
+  return { primaryColor, itemTextColor };
 };
 
 const mapDispatchToProps = dispatch => ({
   onChangeItemTextColor: (color) => {
-    dispatch(changeItemTextColor(color));
+    dispatch(changeItemTextColorAction(color));
+  },
+  onChangePrimaryColorAction: (color) => {
+    dispatch(changePrimaryColorAction(color));
   },
 });
 

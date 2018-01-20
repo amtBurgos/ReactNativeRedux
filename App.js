@@ -4,9 +4,9 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import { Router, Scene, Tabs } from 'react-native-router-flux';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import { Provider } from 'react-redux';
 
 import getStore from './config/storeConfig';

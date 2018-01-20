@@ -1,13 +1,13 @@
 import React from 'react';
 // import { Router, Scene, Tabs } from 'react-native-router-flux';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 import { connect } from 'react-redux';
 
 const style = {
   text: {
-    fontSize: 20,
+    fontSize: 16,
     textAlign: 'left',
-    margin: 10,
+    margin: 12,
   },
 };
 
