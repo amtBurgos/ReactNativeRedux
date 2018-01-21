@@ -50,10 +50,8 @@ const main = (state = initialState, action) => {
       if (action.saveType === 'ADD') {
         items.unshift({ id: action.id, value: action.value });
       } else if (action.saveType === 'CHANGE') {
-        items = items.map((item) => {
-          if (item.id === action.id) item.value = action.value;
-          return { ...item };
-        });
+        items = items.map(item =>
+          (item.id === action.id ? { ...item, value: action.value } : { ...item }));
       }
       // Save item, close modal and clean input text
       currentState = {
