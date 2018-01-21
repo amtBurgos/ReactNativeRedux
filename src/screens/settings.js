@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { StyleSheet, View, Button } from 'react-native';
+import { StyleSheet, TouchableHighlight, Button } from 'react-native';
 // import { Actions } from 'react-native-router-flux';
 import { changePrimaryColorAction, changeItemTextColorAction } from '../actions/settings';
 
@@ -18,7 +18,7 @@ const colorList = ['#4caf50', '#00bcd4', '#9c27b0', '#f44336', '#fb8c00', '#d500
 const getRandomColor = () => colorList[Math.floor(Math.random() * colorList.length)];
 
 const Settings = ({ primaryColor = '', itemTextColor = '', onChangeItemTextColor = () => {} }) => (
-  <View style={styles.container}>
+  <TouchableHighlight style={styles.container}>
     <Button
       onPress={() => onChangeItemTextColor(getRandomColor())}
       onLongPress={() => {}}
@@ -26,7 +26,7 @@ const Settings = ({ primaryColor = '', itemTextColor = '', onChangeItemTextColor
       color="blue"
       accessibilityLabel="Change Text Color"
     />
-  </View>
+  </TouchableHighlight>
 );
 
 const mapStateToProps = ({ settings }) => {

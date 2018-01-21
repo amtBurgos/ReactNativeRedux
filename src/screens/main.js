@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import { StyleSheet, ScrollView, Button, Modal, TouchableHighlight } from 'react-native';
 // import { Actions } from 'react-native-router-flux';
 import Item from '../components/item/item';
+import EditItem from '../components/editItem/editItem';
 import { displayModalAction } from '../actions/main';
+import { changeItemTextColorAction } from '../actions/settings';
 
 const styles = StyleSheet.create({
   container: {
@@ -11,21 +13,51 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0,0,0,0.65)',
+  },
+  item: {
+    width: 100,
+  },
 });
 
 const Main = ({
   items = [{ id: 'example', value: 'Example' }],
   displayModal = false,
+  itemEdited,
   onOpenModal = () => {},
+  onChangeItemTextColor = () => {},
 }) => {
-  const listItems = items.map(item => <Item key={item.id} text={item.value} />);
+  const listItems = items.map(item => <Item key={item.id} item={item} />);
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Modal animationType="fade" visible={displayModal} onRequestClose={() => onOpenModal(false)}>
-        <Button title="Close Modal" onPress={() => onOpenModal(false)} />
+      <Modal
+        animationType="fade"
+        transparent
+        visible={displayModal}
+        onRequestClose={() => onOpenModal(false)}
+      >
+        <EditItem
+          onSave={() => onOpenModal(false)}
+          onCancel={() => onOpenModal(false)}
+          item={itemEdited}
+        />
       </Modal>
       <TouchableHighlight>
-        <Button title="Open Modal" onPress={() => onOpenModal(true)} />
+        <Button title="Add to list" onPress={() => onOpenModal(true)} />
+      </TouchableHighlight>
+      <TouchableHighlight style={styles.container}>
+        <Button
+          onPress={() =>
+            onChangeItemTextColor(`#${Math.floor(Math.random() * 16777215).toString(16)}`)
+          }
+          onLongPress={() => {}}
+          title="Change Text Color"
+          color="blue"
+          accessibilityLabel="Change Text Color"
+        />
       </TouchableHighlight>
       {listItems}
     </ScrollView>
@@ -33,13 +65,16 @@ const Main = ({
 };
 
 const mapStateToProps = ({ main }) => {
-  const { items, displayModal } = main;
-  return { items, displayModal };
+  const { items, displayModal, itemEdited } = main;
+  return { items, displayModal, itemEdited };
 };
 
 const mapDispatchToProps = dispatch => ({
   onOpenModal: (displayModal) => {
     dispatch(displayModalAction(displayModal));
+  },
+  onChangeItemTextColor: (color) => {
+    dispatch(changeItemTextColorAction(color));
   },
 });
 
