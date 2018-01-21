@@ -6,8 +6,9 @@
 
 import React from 'react';
 import { Router, Scene, Tabs } from 'react-native-router-flux';
-import { Platform, StyleSheet } from 'react-native';
+import { Platform, StyleSheet, Text } from 'react-native';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/lib/integration/react';
 
 import getStore from './config/storeConfig';
 import Main from './src/screens/main';
@@ -19,24 +20,27 @@ const instructions = Platform.select({
   android: 'Double tap R on your keyboard to reload,\nShake or press menu button for dev menu',
 });
 
-const store = getStore();
+// const store = getStore();
+const { store, persistor } = getStore();
 
 const App = () => (
   <Provider store={store}>
-    <Router>
-      <Scene key="root">
-        <Tabs
-          key="tabbar"
-          tabs
-          tabBarPosition="bottom"
-          tabBarStyle={{ backgroundColor: '#FFFFFF' }}
-        >
-          <Tabs key="maps" component={Maps} />
-          <Tabs key="main" component={Main} initial />
-          <Tabs key="settings" component={Settings} />
-        </Tabs>
-      </Scene>
-    </Router>
+    <PersistGate loading={<Text>LOADING</Text>} persistor={persistor}>
+      <Router>
+        <Scene key="root">
+          <Tabs
+            key="tabbar"
+            tabs
+            tabBarPosition="bottom"
+            tabBarStyle={{ backgroundColor: '#FFFFFF' }}
+          >
+            <Tabs key="maps" component={Maps} />
+            <Tabs key="main" component={Main} initial />
+            <Tabs key="settings" component={Settings} />
+          </Tabs>
+        </Scene>
+      </Router>
+    </PersistGate>
   </Provider>
 );
 

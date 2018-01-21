@@ -6,4 +6,4 @@ const getStore = () => {
   return store;
 };
 
-export default getStore;
+export default getStore();

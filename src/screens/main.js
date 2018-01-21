@@ -6,6 +6,7 @@ import Item from '../components/item/item';
 import EditItem from '../components/editItem/editItem';
 import { displayModalAction } from '../actions/main';
 import { changeItemTextColorAction } from '../actions/settings';
+import { getRandomColor } from '../util/util';
 
 const styles = StyleSheet.create({
   container: {
@@ -16,7 +17,7 @@ const styles = StyleSheet.create({
   modalContainer: {
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: 'rgba(0,0,0,0.65)',
+    backgroundColor: 'rgba(255,255,255,0.65)',
   },
   item: {
     width: 100,
@@ -34,8 +35,8 @@ const Main = ({
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Modal
-        animationType="fade"
-        transparent
+        animationType="slide"
+        contentContainerStyle={styles.modalContainer}
         visible={displayModal}
         onRequestClose={() => onOpenModal(false)}
       >
@@ -50,9 +51,7 @@ const Main = ({
       </TouchableHighlight>
       <TouchableHighlight style={styles.container}>
         <Button
-          onPress={() =>
-            onChangeItemTextColor(`#${Math.floor(Math.random() * 16777215).toString(16)}`)
-          }
+          onPress={() => onChangeItemTextColor(getRandomColor())}
           onLongPress={() => {}}
           title="Change Text Color"
           color="blue"
