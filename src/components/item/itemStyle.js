@@ -10,7 +10,7 @@ export default {
       backgroundColor: '#efefef',
       // backgroundColor: 'blue',
       borderRadius: 9,
-      // elevation: 2,
+      //elevation: 2,
     },
     container: {
       alignContent: 'center',
