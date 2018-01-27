@@ -24,10 +24,10 @@ const Item = ({
     text: { ...style.text, color },
   });
 
-  // onPress={() => onPressItem(item)}
   return (
     <TouchableNativeFeedback
       background={TouchableNativeFeedback.SelectableBackgroundBorderless()}
+      onPress={() => onPressItem(item)}
       useForeground
     >
       <View style={styles.container}>
