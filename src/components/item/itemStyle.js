@@ -8,8 +8,9 @@ export default {
       // borderWidth: 1,
       // borderColor: 'blue',
       backgroundColor: '#efefef',
+      // backgroundColor: 'blue',
       borderRadius: 9,
-      elevation: 2,
+      // elevation: 2,
     },
     container: {
       alignContent: 'center',

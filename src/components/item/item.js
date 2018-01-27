@@ -1,6 +1,6 @@
 import React from 'react';
 // import { Router, Scene, Tabs } from 'react-native-router-flux';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableNativeFeedback } from 'react-native';
 import { connect } from 'react-redux';
 import { displayModalAction, changeItemEdited } from '../../actions/main';
 import itemStyle from './itemStyle';
@@ -20,16 +20,20 @@ const Item = ({
   }
 
   const styles = StyleSheet.create({
+    ...style,
     text: { ...style.text, color },
-    container: { ...style.container },
   });
 
+  // onPress={() => onPressItem(item)}
   return (
-    <View style={styles.container}>
-      <Text onPress={() => onPressItem(item)} style={styles.text}>
-        {item.value}
-      </Text>
-    </View>
+    <TouchableNativeFeedback
+      background={TouchableNativeFeedback.SelectableBackground()}
+      useForeground
+    >
+      <View style={styles.container}>
+        <Text style={styles.text}>{item.value}</Text>
+      </View>
+    </TouchableNativeFeedback>
   );
 };
 
