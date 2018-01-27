@@ -3,29 +3,29 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { displayModalAction, changeItemEdited } from '../../actions/main';
-
-const style = {
-  text: {
-    fontSize: 18,
-    textAlign: 'center',
-    margin: 15,
-    borderWidth: 1,
-  },
-  container: {
-    width: 100,
-    alignContent: 'center',
-  },
-};
+import itemStyle from './itemStyle';
 
 const Item = ({
   item = { id: -1, value: '' },
   color = 'blue',
+  styleType = 'list',
   onPressItem = () => {},
   onLongPress = () => {},
 }) => {
-  const styles = StyleSheet.create({ text: { ...style.text, color, borderColor: color } });
+  let style;
+  if (styleType === 'list') {
+    style = itemStyle.list;
+  } else if (styleType === 'square') {
+    style = itemStyle.square;
+  }
+
+  const styles = StyleSheet.create({
+    text: { ...style.text, color },
+    container: { ...style.container },
+  });
+
   return (
-    <View style={style.container}>
+    <View style={styles.container}>
       <Text onPress={() => onPressItem(item)} style={styles.text}>
         {item.value}
       </Text>

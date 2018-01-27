@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { StyleSheet, TouchableHighlight, Button } from 'react-native';
 // import { Actions } from 'react-native-router-flux';
 import { changePrimaryColorAction, changeItemTextColorAction } from '../actions/settings';
+import { getRandomColor } from '../util/util';
 
 const styles = StyleSheet.create({
   container: {
@@ -12,10 +13,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-
-const colorList = ['#4caf50', '#00bcd4', '#9c27b0', '#f44336', '#fb8c00', '#d50000'];
-
-const getRandomColor = () => colorList[Math.floor(Math.random() * colorList.length)];
 
 const Settings = ({ primaryColor = '', itemTextColor = '', onChangeItemTextColor = () => {} }) => (
   <TouchableHighlight style={styles.container}>

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { StyleSheet, Image } from 'react-native';
 import SvgUrifrom from 'react-native-svg-uri';
 
-const Icon = ({ color = '#000000', icon = '', onClick = function () {} }) => ({
+const Icon = ({ color = '#00000', icon = '', onClick = function () {} }) => ({
   // <Image />
 });
 const mapStateToProps = ({ common }, ownProps) => {
