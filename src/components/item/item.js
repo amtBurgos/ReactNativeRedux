@@ -24,16 +24,16 @@ const Item = ({
     text: { ...style.text, color },
   });
 
+  // <TouchableNativeFeedback
+  //   background={TouchableNativeFeedback.SelectableBackgroundBorderless()}
+  //   onPress={() => onPressItem(item)}
+  //   useForeground
+  //   >
+  //   </TouchableNativeFeedback>
   return (
-    <TouchableNativeFeedback
-      background={TouchableNativeFeedback.SelectableBackgroundBorderless()}
-      onPress={() => onPressItem(item)}
-      useForeground
-    >
-      <View style={styles.container}>
-        <Text style={styles.text}>{item.value}</Text>
-      </View>
-    </TouchableNativeFeedback>
+    <View style={styles.container}>
+      <Text style={styles.text}>{item.value}</Text>
+    </View>
   );
 };
 
