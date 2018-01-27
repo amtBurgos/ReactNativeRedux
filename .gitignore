@@ -55,4 +55,6 @@ buck-out/
 
 # CUSTOM IGNORE
 .vscode/*
+.vscode/
+.vscode
 package-lock.json
