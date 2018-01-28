@@ -3,6 +3,8 @@ import { Router, Scene, Tabs } from 'react-native-router-flux';
 import { Platform, StyleSheet, Text } from 'react-native';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/lib/integration/react';
+import IconFontAwesome from 'react-native-vector-icons/FontAwesome';
+import IconMaterial from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import getStore from './config/storeConfig';
 import Main from './src/screens/main';
@@ -23,14 +25,57 @@ const styles = StyleSheet.create({
 // const store = getStore();
 const { store, persistor } = getStore();
 
+const TabIcon = ({
+  focused, activeTintColor, inactiveTintColor, title,
+}) => {
+  let tabIcon = '';
+  switch (title) {
+    case 'maps':
+      tabIcon = (
+        <IconMaterial
+          name="google-maps"
+          size={24}
+          color={focused ? activeTintColor : inactiveTintColor}
+        />
+      );
+      break;
+    case 'main':
+      tabIcon = (
+        <IconMaterial name="home" size={26} color={focused ? activeTintColor : inactiveTintColor} />
+      );
+      break;
+    case 'settings':
+      tabIcon = (
+        <IconFontAwesome
+          name="gear"
+          size={24}
+          color={focused ? activeTintColor : inactiveTintColor}
+        />
+      );
+      break;
+    default:
+      break;
+  }
+  return tabIcon;
+};
+
 const App = () => (
   <Provider store={store}>
     <PersistGate loading={<Text>LOADING</Text>} persistor={persistor}>
       <Router>
-        <Tabs key="root" tabBarPosition="bottom" headerMode="none" tabBarStyle={styles.tabBar}>
-          <Tabs key="maps" component={Maps} />
-          <Tabs key="main" component={Main} initial />
-          <Tabs key="settings" component={Settings} />
+        <Tabs
+          key="root"
+          tabBarPosition="bottom"
+          headerMode="none"
+          tabBarStyle={styles.tabBar}
+          showLabel={false}
+          activeTintColor={store.getState().settings.itemTextColor}
+          inactiveTintColor="#bcbcbc"
+          lazy
+        >
+          <Tabs key="maps" title="maps" component={Maps} tabBarIcon={TabIcon} />
+          <Tabs key="main" title="main" component={Main} initial tabBarIcon={TabIcon} />
+          <Tabs key="settings" title="settings" component={Settings} tabBarIcon={TabIcon} />
         </Tabs>
       </Router>
     </PersistGate>
