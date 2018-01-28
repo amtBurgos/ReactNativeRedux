@@ -60,14 +60,14 @@ const Main = ({
         </TouchableHighlight>
         <TouchableHighlight style={styles.container}>
           <Button
-            onPress={() => onChangeItemTextColor(getRandomColor())}
             onLongPress={() => {}}
-            title="Change Text Color"
             color="blue"
+            title="Change Text Color"
             accessibilityLabel="Change Text Color"
+            onPress={() => onChangeItemTextColor(getRandomColor())}
           />
         </TouchableHighlight>
-        {listItems}
+        {listItems}        
       </ScrollView>
     </View>
   );

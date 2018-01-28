@@ -1,7 +1,6 @@
 import React from 'react';
-// import { Router, Scene, Tabs } from 'react-native-router-flux';
-import { StyleSheet, Text, View, TouchableNativeFeedback } from 'react-native';
 import { connect } from 'react-redux';
+import { StyleSheet, Text, View } from 'react-native';
 import { displayModalAction, changeItemEdited } from '../../actions/main';
 import itemStyle from './itemStyle';
 
@@ -24,15 +23,11 @@ const Item = ({
     text: { ...style.text, color },
   });
 
-  // <TouchableNativeFeedback
-  //   background={TouchableNativeFeedback.SelectableBackgroundBorderless()}
-  //   onPress={() => onPressItem(item)}
-  //   useForeground
-  //   >
-  //   </TouchableNativeFeedback>
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>{item.value}</Text>
+      <Text style={styles.text} onPress={() => onPressItem(item)}>
+        {item.value}
+      </Text>
     </View>
   );
 };
