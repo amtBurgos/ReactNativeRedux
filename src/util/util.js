@@ -4,7 +4,7 @@ export const keyGen = () =>
     .substr(2, 9);
 
 export const getRandomColor = () => {
-  let color = 'red';
+  let color = '#00000';
   while (color.length < 7) {
     color = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
   }
