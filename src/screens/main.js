@@ -14,10 +14,8 @@ import {
 import Item from '../components/item/item';
 import EditItem from '../components/editItem/editItem';
 import { displayModalAction } from '../actions/main';
-import { changeItemTextColorAction } from '../actions/settings';
+import { changeItemTextColorAction, changePrimaryColorAction } from '../actions/settings';
 import { getRandomColor } from '../util/util';
-// import Icon from 'react-native-vector-icons/FontAwesome';
-
 
 const styles = StyleSheet.create({
   container: {
@@ -38,10 +36,10 @@ const Main = ({
   primaryColor = 'blue',
   onOpenModal = () => {},
   onChangeItemTextColor = () => {},
+  onChangePrimaryColor = () => {},
 }) => {
   const listItems = items.map(item => <Item key={item.id} item={item} />);
 
-  //<Icon name="rocket" size={30} color="#900" />
   return (
     <View>
       <StatusBar backgroundColor={primaryColor} barStyle="light-content" />
@@ -70,7 +68,16 @@ const Main = ({
             onPress={() => onChangeItemTextColor(getRandomColor())}
           />
         </TouchableHighlight>
-        {listItems}        
+        <TouchableHighlight style={styles.container}>
+          <Button
+            onLongPress={() => {}}
+            color="blue"
+            title="Change Primary Color"
+            accessibilityLabel="Change Primary Color"
+            onPress={() => onChangePrimaryColor(getRandomColor())}
+          />
+        </TouchableHighlight>
+        {listItems}
       </ScrollView>
     </View>
   );
@@ -78,12 +85,12 @@ const Main = ({
 
 const mapStateToProps = ({ main, settings }) => {
   const { items, displayModal, itemEdited } = main;
-  // const { primaryColor } = settings;
+  const { primaryColor } = settings;
   return {
     items,
     displayModal,
     itemEdited,
-    primaryColor: settings.itemTextColor,
+    primaryColor,
   };
 };
 
@@ -93,6 +100,9 @@ const mapDispatchToProps = dispatch => ({
   },
   onChangeItemTextColor: (color) => {
     dispatch(changeItemTextColorAction(color));
+  },
+  onChangePrimaryColor: (color) => {
+    dispatch(changePrimaryColorAction(color));
   },
 });
 
