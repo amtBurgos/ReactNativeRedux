@@ -16,6 +16,8 @@ import EditItem from '../components/editItem/editItem';
 import { displayModalAction } from '../actions/main';
 import { changeItemTextColorAction } from '../actions/settings';
 import { getRandomColor } from '../util/util';
+// import Icon from 'react-native-vector-icons/FontAwesome';
+
 
 const styles = StyleSheet.create({
   container: {
@@ -39,6 +41,7 @@ const Main = ({
 }) => {
   const listItems = items.map(item => <Item key={item.id} item={item} />);
 
+  //<Icon name="rocket" size={30} color="#900" />
   return (
     <View>
       <StatusBar backgroundColor={primaryColor} barStyle="light-content" />
