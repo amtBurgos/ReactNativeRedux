@@ -99,7 +99,7 @@ const mapDispatchToProps = dispatch => ({
   },
   onChangeItemTextColor: (color) => {
     dispatch(changeItemTextColorAction(color));
-  }
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);

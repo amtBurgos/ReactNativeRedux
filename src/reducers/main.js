@@ -48,10 +48,21 @@ const main = (state = initialState, action) => {
     case types.SAVE_ITEM:
       let items = state.items.slice();
       if (action.saveType === 'ADD') {
-        items.unshift({ id: action.id, value: action.value });
+        if (action.value.trim() !== '') {
+          items.unshift({ id: action.id, value: action.value });
+        }
       } else if (action.saveType === 'CHANGE') {
-        items = items.map(item =>
-          (item.id === action.id ? { ...item, value: action.value } : { ...item }));
+        if (action.value.trim() !== '') {
+          items = items.map((item) => {
+            const newItem = { ...item };
+            if (newItem.id === action.id) {
+              newItem.value = action.value;
+            }
+            return newItem;
+          });
+        } else {
+          items = state.items.filter(item => item.id !== action.id);
+        }
       }
       // Save item, close modal and clean input text
       currentState = {
