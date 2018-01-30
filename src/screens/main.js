@@ -9,6 +9,8 @@ import {
   View,
   TouchableHighlight,
 } from 'react-native';
+import FloatActionButton from 'react-native-action-button';
+import IconMaterial from 'react-native-vector-icons/MaterialCommunityIcons';
 
 // import { Actions } from 'react-native-router-flux';
 import Item from '../components/item/item';
@@ -56,9 +58,7 @@ const Main = ({
             item={itemEdited}
           />
         </Modal>
-        <TouchableHighlight>
-          <Button title="Add to list" onPress={() => onOpenModal(true)} />
-        </TouchableHighlight>
+
         <TouchableHighlight style={styles.container}>
           <Button
             onLongPress={() => {}}
@@ -79,6 +79,15 @@ const Main = ({
         </TouchableHighlight>
         {listItems}
       </ScrollView>
+      <FloatActionButton
+        useNativeFeedback
+        buttonColor={primaryColor}
+        hideShadow={false}
+        degrees={0}
+        onPress={() => onOpenModal(true)}
+      >
+        <IconMaterial name="plus" />
+      </FloatActionButton>
     </View>
   );
 };
