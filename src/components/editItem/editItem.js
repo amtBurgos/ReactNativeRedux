@@ -36,7 +36,7 @@ class EditItem extends Component {
       <View>
         <TextInput
           defaultValue={this.state.item.value}
-          multiline
+          numberOfLines={5}
           placeholder="Type something!"
           onChangeText={valueChanged => this.changeText(valueChanged)}
         />

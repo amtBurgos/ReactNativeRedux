@@ -16,7 +16,7 @@ import IconMaterial from 'react-native-vector-icons/MaterialCommunityIcons';
 import Item from '../components/item/item';
 import EditItem from '../components/editItem/editItem';
 import { displayModalAction } from '../actions/main';
-import { changeItemTextColorAction, changePrimaryColorAction } from '../actions/settings';
+import { changeItemTextColorAction } from '../actions/settings';
 import { getRandomColor } from '../util/util';
 
 const styles = StyleSheet.create({
@@ -38,7 +38,6 @@ const Main = ({
   primaryColor = 'blue',
   onOpenModal = () => {},
   onChangeItemTextColor = () => {},
-  onChangePrimaryColor = () => {},
 }) => {
   const listItems = items.map(item => <Item key={item.id} item={item} />);
 
@@ -100,10 +99,7 @@ const mapDispatchToProps = dispatch => ({
   },
   onChangeItemTextColor: (color) => {
     dispatch(changeItemTextColorAction(color));
-  },
-  onChangePrimaryColor: (color) => {
-    dispatch(changePrimaryColorAction(color));
-  },
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);
