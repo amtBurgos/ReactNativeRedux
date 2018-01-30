@@ -70,10 +70,10 @@ const Main = ({
         {listItems}
       </ScrollView>
       <FloatActionButton
-        useNativeFeedback
         buttonColor={primaryColor}
-        hideShadow={false}
         degrees={0}
+        offsetX={40}
+        offsetY={40}
         onPress={() => onOpenModal(true)}
       >
         <IconMaterial name="plus" />
