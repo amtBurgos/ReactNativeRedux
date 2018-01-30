@@ -68,15 +68,6 @@ const Main = ({
             onPress={() => onChangeItemTextColor(getRandomColor())}
           />
         </TouchableHighlight>
-        <TouchableHighlight style={styles.container}>
-          <Button
-            onLongPress={() => {}}
-            color="blue"
-            title="Change Primary Color"
-            accessibilityLabel="Change Primary Color"
-            onPress={() => onChangePrimaryColor(getRandomColor())}
-          />
-        </TouchableHighlight>
         {listItems}
       </ScrollView>
       <FloatActionButton

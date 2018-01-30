@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { StyleSheet, TouchableHighlight, Button } from 'react-native';
 // import { Actions } from 'react-native-router-flux';
-import { changePrimaryColorAction, changeItemTextColorAction } from '../actions/settings';
+import { changePrimaryColorAction } from '../actions/settings';
 import { getRandomColor } from '../util/util';
 
 const styles = StyleSheet.create({
@@ -14,14 +14,14 @@ const styles = StyleSheet.create({
   },
 });
 
-const Settings = ({ primaryColor = '', itemTextColor = '', onChangeItemTextColor = () => {} }) => (
+const Settings = ({ onChangePrimaryColor = () => {} }) => (
   <TouchableHighlight style={styles.container}>
     <Button
-      onPress={() => onChangeItemTextColor(getRandomColor())}
       onLongPress={() => {}}
-      title="Change Text Color"
       color="blue"
-      accessibilityLabel="Change Text Color"
+      title="Change Primary Color"
+      accessibilityLabel="Change Primary Color"
+      onPress={() => onChangePrimaryColor(getRandomColor())}
     />
   </TouchableHighlight>
 );
@@ -32,10 +32,7 @@ const mapStateToProps = ({ settings }) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  onChangeItemTextColor: (color) => {
-    dispatch(changeItemTextColorAction(color));
-  },
-  onChangePrimaryColorAction: (color) => {
+  onChangePrimaryColor: (color) => {
     dispatch(changePrimaryColorAction(color));
   },
 });
