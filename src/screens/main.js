@@ -14,6 +14,7 @@ import IconMaterial from 'react-native-vector-icons/MaterialCommunityIcons';
 
 // import { Actions } from 'react-native-router-flux';
 import Item from '../components/item/item';
+import Card from '../components/card/card';
 import EditItem from '../components/editItem/editItem';
 import { displayModalAction } from '../actions/main';
 import { changeItemTextColorAction } from '../actions/settings';
@@ -21,7 +22,7 @@ import { getRandomColor } from '../util/util';
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
+    backgroundColor: '#efefef',
     justifyContent: 'center',
   },
   modalContainer: {
@@ -39,7 +40,10 @@ const Main = ({
   onOpenModal = () => {},
   onChangeItemTextColor = () => {},
 }) => {
-  const listItems = items.map(item => <Item key={item.id} item={item} />);
+  // const listItems = items.map(item => <Item key={item.id} item={item} />);
+  const listItems = items.map(item => (
+    <Card key={item.id} title={item.value} description="Description" />
+  ));
 
   return (
     <View>

@@ -7,7 +7,7 @@ export default {
       paddingLeft: 12,
       // borderWidth: 1,
       // borderColor: 'blue',
-      backgroundColor: '#efefef',
+      backgroundColor: 'white',
       borderRadius: 9,
       elevation: 3,
     },
