@@ -16,7 +16,7 @@ import IconMaterial from 'react-native-vector-icons/MaterialCommunityIcons';
 import Item from '../components/item/item';
 import EditItem from '../components/editItem/editItem';
 import { displayModalAction } from '../actions/main';
-import { changeItemTextColorAction, changePrimaryColorAction } from '../actions/settings';
+import { changeItemTextColorAction } from '../actions/settings';
 import { getRandomColor } from '../util/util';
 
 const styles = StyleSheet.create({
@@ -38,7 +38,6 @@ const Main = ({
   primaryColor = 'blue',
   onOpenModal = () => {},
   onChangeItemTextColor = () => {},
-  onChangePrimaryColor = () => {},
 }) => {
   const listItems = items.map(item => <Item key={item.id} item={item} />);
 
@@ -71,10 +70,10 @@ const Main = ({
         {listItems}
       </ScrollView>
       <FloatActionButton
-        useNativeFeedback
         buttonColor={primaryColor}
-        hideShadow={false}
         degrees={0}
+        offsetX={40}
+        offsetY={40}
         onPress={() => onOpenModal(true)}
       >
         <IconMaterial name="plus" />
@@ -100,9 +99,6 @@ const mapDispatchToProps = dispatch => ({
   },
   onChangeItemTextColor: (color) => {
     dispatch(changeItemTextColorAction(color));
-  },
-  onChangePrimaryColor: (color) => {
-    dispatch(changePrimaryColorAction(color));
   },
 });
 
